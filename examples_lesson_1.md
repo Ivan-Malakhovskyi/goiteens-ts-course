@@ -1,11 +1,3 @@
-# Урок 1. TypeScript: синтаксис та типи
-
-**Тривалість:** ~90 хв (можна розбити на 2 заняття по 45 хв)
-**Аудиторія:** діти/підлітки, вже знають базовий JavaScript
-**Формат:** теорія + живе кодування + міні-практика після кожного блоку
-
----
-
 ## Мета уроку
 
 Після цього уроку учні повинні вміти:
@@ -116,11 +108,20 @@ let age: number = 12;
 let isStudent: boolean = true;
 let nothing: null = null;
 let notDefined: undefined = undefined;
+
+userName = 10;
+age = "d";
+
+let street = "Street";
+street = 10;
 ```
 
 ### Масиви
 
 ```ts
+const numbers = [1, 2, "", null];
+numbers.push("");
+
 let scores: number[] = [90, 85, 100];
 let names: Array<string> = ["Іван", "Марія"]; // альтернативний синтаксис
 ```
@@ -133,6 +134,23 @@ let student: { name: string; age: number; isActive: boolean } = {
   age: 14,
   isActive: true,
 };
+
+type TStudent = { name: string; age: number; isActive: boolean };
+
+const student: TStudent = {
+  name: "name",
+  age: 18,
+  isActive: true,
+};
+student.age = "";
+
+type TEvent = "click";
+
+const myButton: TEvent = "clickd";
+
+ВИкористання в ui бібліотеках
+
+type TEvent = "click" | "submit";
 ```
 
 ### Union types (об'єднання типів) — дуже практична штука
@@ -142,6 +160,10 @@ let id: string | number;
 id = 101; // ✅
 id = "A101"; // ✅
 id = true; // ❌ Type 'boolean' is not assignable
+
+type TStudent = { name: string; age: number | null; isActive: boolean };
+
+Не потрібно зловживати |
 ```
 
 ### Функції з типізованими параметрами та поверненням
@@ -222,8 +244,6 @@ anything = "тепер я рядок";
 anything = true; // TS нічого не перевіряє — це небезпечно
 ```
 
-> ⚠️ **Жарт для класу:** `any` — це як сказати вчительці "довірся мені". Іноді працює, але краще так не робити 😅
-
 ### `unknown` — безпечніший брат `any`
 
 ```ts
@@ -254,6 +274,66 @@ function infiniteLoop(): never {
 function logMessage(text: string): void {
   console.log(text);
 }
+
+logMessage(2);
+
+type TFunc = (name: { name: string }) => string;
+
+const func: TFunc = (user) => {
+  return `Hello ${user.name}`;
+};
+
+const func = (user: { name: string }): string => {
+  return `Hello ${user.name}`;
+};
+
+type User = {
+  name: string;
+  age: number;
+  isActive: boolean;
+};
+
+type userFunc = (name: string, age: number, isActive: boolean) => User;
+
+const user: userFunc = (name, age, isActive) => {
+  return { name, age, isActive };
+};
+
+interface ICar {
+  mark: string;
+  color: string;
+  start: () => void;
+}
+
+const Car: ICar = {
+  mark: "BMW",
+  color: "black",
+  start: () => {
+    console.log("START");
+  },
+};
+
+enum Role {
+  ADMIN = "admin",
+  SUPERADMIN = "superadmin",
+}
+
+type IUser = {
+  name: string;
+  email: string;
+  role?: Role;
+};
+
+const user: IUser = {
+  name: "df",
+  email: "dd",
+};
+
+const superuser: IUser = {
+  name: "df",
+  email: "dd",
+  role: Role.ADMIN,
+};
 ```
 
 ### Порівняльна таблиця (показати дітям на екрані)
