@@ -1,7 +1,7 @@
 ```ts
 // Завдання 1
 // Типізуйте параметри та повертаюче значення функції
-const add = (a, b) => {
+const add = (a: number, b: number): number => {
   return a + b;
 };
 
