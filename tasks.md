@@ -12,8 +12,6 @@
 
 🟡 У класі Hero додай методи isAlive(): boolean (чи health > 0) і describe(): string. Створи героя з health = 0 і перевір обидва.
 
-🔴 Створи клас Rectangle з width і height. Додай методи getArea(), getPerimeter() і isSquare(). Порівняй 3 різні прямокутники.
-
 3. Модифікатори доступу (public, private, protected)
 
 🟢 Створи клас Wallet з private balance = 0. Спробуй зробити wallet.balance = 1000 і подивись на помилку.
