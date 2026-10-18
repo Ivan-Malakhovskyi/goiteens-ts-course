@@ -1,4 +1,8 @@
-## Intersection Types
+## type Employee = {
+
+name: string;
+startDate: Date;
+};
 
 можна об'єднувати типи та інтерфейси за допомогою extends, але є коротший запис
 

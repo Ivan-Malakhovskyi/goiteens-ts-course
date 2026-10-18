@@ -4,6 +4,11 @@
 2. Які особливості у роботі з шаблонами проєктування?
 3. Які принципи ООП ви запам'ятали?
 
+- абстракція
+- інкапсуляція
+- поліморфізм
+- наслідування
+
 - Intersection Types
 - Type Guards
 - Type Casting
@@ -12,8 +17,8 @@
 - Nullish Coalescing
 - Generics
 - extends + keyof
-- Partial
 - ReadOnly
+- Partial<T>
 - Pick<T>
 - Omit<T>
 - Record<K, T>
